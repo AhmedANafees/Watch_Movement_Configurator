@@ -1,0 +1,35 @@
+Parametric Caliber Configurator — Phase 1
+
+Phase 1: establish inputs and the core geometry engine for gears and centers.
+
+Contents:
+1) Data model (MovementParameters, Gear, Arbor, PlateConstraints)
+2) Geometry helpers (pitch diameter, center distance, addendum, dedendum, tooth clearance)
+3) Simple gear-train builder that computes center positions and basic collision checks
+
+Phase 1.1 - Data Model
+    P1.1 uses the dataclass and field from the data classes library to create two main classes
+    a MovementParameters and Gear class. The resoning for using the dataclasses libray as oposed 
+    to just making a regular class was that a dataclass oobject has auto generates some of the 
+    boiler plate code like init and eq without cluttering up the code in the file.
+
+Phase 1.2 - Geometry helpers
+    p1.2 as the name implies is about programming various helper functions that would be needed 
+    later on in the porject. 
+    The current functions being computing the pitch diameter based on the tooth count and module 
+    of the gear.
+    The second vital function being computing the center distances between 2 gears. This is vital
+     as it allows the program to work with the placing second gear function. It uses the 2 gears 
+    diameters, gets the averge. 
+    The final funtion place second gear takes the center distance, the angle between 
+    the two gears and calculates the x,y cordinates of the 2nd gear
+
+Phase 1.3 - collision detection
+    P1.3 implements as simple overlap function using the coordingates of 2 gears as well as thier 
+    radi. it simply checks if the center distance is greater than the sum of the radi and a clearance
+
+Phase 1.4 - Gear Train Builder
+    P1.4 implements a gear train class that holds a list of gears in addition to an increment angle.
+    This phase also exapnds on the collision developed earlier by taking the current gear tain and 
+    making a list of all collisions in the train. The gear train is made by running the compute centers 
+    linear chian function. It places gears radially
