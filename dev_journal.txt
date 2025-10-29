@@ -1,4 +1,5 @@
 Parametric Caliber Configurator — Phase 1
+28/10/2025
 
 Phase 1: establish inputs and the core geometry engine for gears and centers.
 
